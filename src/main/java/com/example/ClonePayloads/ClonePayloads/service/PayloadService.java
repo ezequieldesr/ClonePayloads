@@ -13,12 +13,19 @@ import java.util.Map;
 
 @Service
 public class PayloadService {
+    private static final int MAX_PAYLOAD_NUM = 100;
+
     public PayloadResponse duplicate(PayloadRequest payloadRequest){
         List<Map<String, Object>> result = new ArrayList<>();
 
         for(int i = 0; i < payloadRequest.getQuantidade(); i++){
             result.add(generatorPayload(payloadRequest.getPayload(), i + 1));
         }
+
+        if(payloadRequest.getPayload().size() > MAX_PAYLOAD_NUM){
+            throw new IllegalArgumentException("A quantidade máxima permitida é 100");
+        }
+
         return new PayloadResponse(result);
     }
 
