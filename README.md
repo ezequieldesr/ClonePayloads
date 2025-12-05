@@ -138,3 +138,20 @@ Para rodar:
 * **timestamp** deve ser String válida ISO-8601
 * O **timestamp** é clonado adicionando milissegundos incrementais
 ---
+## 🔗 Endpoint principal
+
+```http
+  POST /api/generate
+```
+
+| Campo | Tipo     | Obrigatório  | Descrição                |
+| :-------- | :------- | :------- | :------------------------- |
+| `quantidade` | `int` | ✅ | Quantidade de clones (2–100) |
+| `payload` | `Map` | ✅ | Objeto JSON original contendo **timestamp** |
+
+
+## 🌐 CORS
+A API está configurada para aceitar requisições apenas do frontend oficial:
+```arduino
+https://payload-cloner.vercel.app/
+```
